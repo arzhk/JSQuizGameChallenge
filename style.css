@@ -18,7 +18,7 @@ body {
   font-family: "Comfortaa", cursive;
 }
 
-.maincontainer {
+#maincontainer {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -49,7 +49,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 h1 {
@@ -119,25 +119,32 @@ h3 {
 }
 
 #questioncontainer h3{
-    color: #F7F7FF;
-    font-size: 24px;
+    color:  #F7F7FF;
+    font-size: 22px;
     margin-bottom: 10px;
-    padding-left: 20px;
+    padding-left: 10px;
+}
+
+#questioncontainer span{
+    color:  #00ff84c7;
+
 }
 
 #questionText{
-    font-size: 18px;
+    font-size: 16px;
     max-width: 510px ;
-    padding: 20px;
+    padding: 10px;
     margin: 0 auto;
 }
 
 #questionNumber{
     font-size: 12px;
+    letter-spacing: 3px;;
     padding: 10px;
     width: 70px;
     text-align: center;
     margin: 0 auto;
+    color: #00ff84c7;
 
 }
 
