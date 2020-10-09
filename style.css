@@ -219,3 +219,27 @@ input:hover{
 input:active{
     transform: scale(1);
 }
+
+#scorecontainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #F7F7FF;
+    background-color: #7E8D85;
+}
+
+#scorecontainer h3{
+    color: #000;
+    font-size: 72px;
+    margin-bottom: 20px;
+}
+
+#scorecontainer button{
+
+    width: 140px;
+    padding: 10px 0px;
+}
+

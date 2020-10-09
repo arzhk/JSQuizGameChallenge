@@ -218,12 +218,8 @@ function selectAnswer() {
   let currentTarget = event.target.innerText;
   let currentDiv = event.target;
   let currentTargetSplit = currentTarget.split("\n");
-  let currentTargetText = currentTargetSplit[2];
+  let currentTargetText = currentTargetSplit.pop(currentTargetSplit.length - 1);
   let correctAnswer = questions[currentQuestion].correct_answer;
-  console.log("current event is: " + currentTarget);
-  console.log("typeof current targe is: " + typeof currentTarget);
-  console.log("correct answer is: " + correctAnswer);
-  console.log("typeof answer is: " + typeof correctAnswer);
 
   const choiceContainer = document.querySelectorAll(".ui-choice");
   const nextButton = document.querySelector("#nextButton");
@@ -242,4 +238,25 @@ function selectAnswer() {
   if (currentTry === 2) {
     nextButton.classList.remove("hidden");
   }
+}
+
+function showScoreScreen() {
+  const questionContainer = document.querySelector("#questioncontainer");
+  questionContainer.classList.add("hidden");
+
+  const homeContainer = document.querySelector("#scorecontainer");
+  homeContainer.classList.remove("hidden");
+
+  let scoreH3 = document.querySelector("#scorecontainer h3");
+  scoreH3.innerText = score;
+}
+
+function reset() {
+  score = 0;
+  currentQuestion = 0;
+  questionNumber = 1;
+  choiceSelector = [0, 1, 2, 3];
+  randomChoices = [];
+  currentTry = 0;
+  play();
 }
