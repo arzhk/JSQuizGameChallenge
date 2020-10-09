@@ -224,20 +224,37 @@ function selectAnswer() {
   const choiceContainer = document.querySelectorAll(".ui-choice");
   const nextButton = document.querySelector("#nextButton");
 
-  if (currentTargetText === correctAnswer) {
-    console.log("you got it right!");
-    currentDiv.classList.add("correct");
-    nextButton.classList.remove("hidden");
-    score++;
-    console.log("current try is: " + currentTry);
-  } else if (currentTry !== 2) {
-    currentDiv.classList.add("incorrect");
-    currentTry++;
-    console.log("Wrong, current try is: " + currentTry);
+  if (currentTargetText === "True" || currentTargetText === "False") {
+    if (currentTargetText === correctAnswer && currentTry !== 1) {
+      currentDiv.classList.add("correct");
+      nextButton.classList.remove("hidden");
+      currentTry++;
+      if (currentTry !== 1) {
+        score++;
+      }
+    } else if (currentTry !== 1) {
+      currentDiv.classList.add("incorrect");
+      currentTry++;
+    }
+    if (currentTry === 1) {
+      nextButton.classList.remove("hidden");
+    }
+  } else {
+    if (currentTargetText === correctAnswer && currentTry !== 2) {
+      currentDiv.classList.add("correct");
+      nextButton.classList.remove("hidden");
+      if (currentTry !== 2) {
+        score++;
+      }
+    } else if (currentTry !== 2) {
+      currentDiv.classList.add("incorrect");
+      currentTry++;
+    }
+    if (currentTry === 2) {
+      nextButton.classList.remove("hidden");
+    }
   }
-  if (currentTry === 2) {
-    nextButton.classList.remove("hidden");
-  }
+  console.log("Current Score is: " + score);
 }
 
 function showScoreScreen() {
@@ -252,6 +269,11 @@ function showScoreScreen() {
 }
 
 function reset() {
+  const questionContainer = document.querySelector("#questioncontainer");
+  questionContainer.classList.add("hidden");
+
+  const homeContainer = document.querySelector("#scorecontainer");
+  homeContainer.classList.add("hidden");
   score = 0;
   currentQuestion = 0;
   questionNumber = 1;
