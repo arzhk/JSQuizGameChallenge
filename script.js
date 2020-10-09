@@ -146,6 +146,10 @@ function play() {
 }
 
 function setQuestion() {
+  let choiceContainer = document.querySelectorAll(".ui-choice");
+  let choicePre = document.querySelectorAll(".choice-pre");
+  let choicePreLetters = ["A.", "B.", "C.", "D."];
+
   let questionTextE = document.querySelector("#questionText");
   questionTextE.innerText = questions[parseInt(currentQuestion)].question;
   console.log(currentQuestion);
@@ -153,16 +157,28 @@ function setQuestion() {
   let questionNumberE = document.querySelector("#questionNumber");
   questionNumberE.innerText = questionNumber + "/" + questions.length;
 
-  let choiceA = document.querySelectorAll(".choice-text");
+  let choices = document.querySelectorAll(".choice-text");
   randomiseChoices();
-  choiceA[0].innerText =
+  choices[0].innerText =
     questions[currentQuestion].answers[parseInt(randomChoices[0])];
-  choiceA[1].innerText =
+  choices[1].innerText =
     questions[currentQuestion].answers[parseInt(randomChoices[1])];
-  choiceA[2].innerText =
+  choices[2].innerText =
     questions[currentQuestion].answers[parseInt(randomChoices[2])];
-  choiceA[3].innerText =
+  choices[3].innerText =
     questions[currentQuestion].answers[parseInt(randomChoices[3])];
+
+  for (let i = 0; i < choices.length; i++) {
+    if (choices[i].innerText === "undefined") {
+      choiceContainer[i].classList.add("hidden");
+    } else if (choiceContainer[i].classList !== "hidden") {
+      choiceContainer[i].classList.remove("hidden");
+      choicePre[i].innerText = choicePreLetters[i];
+    }
+    if (choices[i].innerText === "True" || choices[i].innerText === "False") {
+      choicePre[i].innerText = "";
+    }
+  }
 }
 
 function nextQuestion() {
@@ -171,6 +187,18 @@ function nextQuestion() {
   if (questionNumber > 10) {
     questionNumber = 10;
     showScoreScreen();
+  } else {
+    setQuestion();
+  }
+}
+
+function previousQuestion() {
+  currentQuestion--;
+  questionNumber--;
+  if (questionNumber < 1) {
+    currentQuestion = 0;
+    questionNumber = 1;
+    setQuestion();
   } else {
     setQuestion();
   }
