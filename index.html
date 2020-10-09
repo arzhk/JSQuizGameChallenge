@@ -30,29 +30,40 @@
       <div class="ui-item-top">
         <h3><span>//</span> Question.</h3>
         <p id="questionText">
-          <!--Insert question here-->Adasdsadasdasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasas
+          <!--Insert question here-->
         </p>
         <p id="questionNumber">
-          01/10
           <!--Insert question number here-->
         </p>
       </div>
-      <div class="ui-choice">
-        <p class="choice-pre">A.</p>
-        <p class="choice-text">Choice</p>
+      <div class="ui-choice" onclick="selectAnswer()">
+        <p class="choice-pre"><!--Insert Letter here--></p>
+        <p class="choice-text"><!--Insert choice A Here--></p>
       </div>
-      <div class="ui-choice">
-        <p class="choice-pre">B.</p>
-        <p class="choice-text">Choice 2</p>
+      <div class="ui-choice" onclick="selectAnswer()">
+        <p class="choice-pre"><!--Insert Letter here--></p>
+        <p class="choice-text"><!--Insert choice B Here--></p>
       </div>
-      <div class="ui-choice">
-        <p class="choice-pre">C.</p>
-        <p class="choice-text">Choice 3</p>
+      <div class="ui-choice" onclick="selectAnswer()">
+        <p class="choice-pre"><!--Insert Letter here--></p>
+        <p class="choice-text"><!--Insert choice C Here--></p>
       </div>
-      <div class="ui-choice">
-        <p class="choice-pre">D.</p>
-        <p class="choice-text">Choice 4</p>
+      <div class="ui-choice" onclick="selectAnswer()">
+        <p class="choice-pre"><!--Insert Letter here--></p>
+        <p class="choice-text"><!--Insert choice D Here--></p>
       </div>
+      <input
+        type="button"
+        id="nextButton"
+        class="hidden"
+        value="next question"
+        onclick="nextQuestion()"
+      />
+      <!--<input
+        type="button"
+        value="previous question"
+        onclick="previousQuestion()"
+      />-->
     </div>
   </body>
 </html>

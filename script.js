@@ -101,6 +101,7 @@ let currentQuestion = 0;
 let questionNumber = 1;
 let choiceSelector = [0, 1, 2, 3];
 let randomChoices = [];
+let currentTry = 0;
 
 function randomiseChoices() {
   let checkA = 0;
@@ -182,10 +183,19 @@ function setQuestion() {
 }
 
 function nextQuestion() {
+  let choiceContainer = document.querySelectorAll(".ui-choice");
+  const nextButton = document.querySelector("#nextButton");
   currentQuestion++;
   questionNumber++;
+  currentTry = 0;
+  nextButton.classList.add("hidden");
+  for (let i = 0; i < choiceContainer.length; i++) {
+    choiceContainer[i].classList.remove("correct");
+    choiceContainer[i].classList.remove("incorrect");
+  }
   if (questionNumber > 10) {
     questionNumber = 10;
+
     showScoreScreen();
   } else {
     setQuestion();
@@ -201,5 +211,35 @@ function previousQuestion() {
     setQuestion();
   } else {
     setQuestion();
+  }
+}
+
+function selectAnswer() {
+  let currentTarget = event.target.innerText;
+  let currentDiv = event.target;
+  let currentTargetSplit = currentTarget.split("\n");
+  let currentTargetText = currentTargetSplit[2];
+  let correctAnswer = questions[currentQuestion].correct_answer;
+  console.log("current event is: " + currentTarget);
+  console.log("typeof current targe is: " + typeof currentTarget);
+  console.log("correct answer is: " + correctAnswer);
+  console.log("typeof answer is: " + typeof correctAnswer);
+
+  const choiceContainer = document.querySelectorAll(".ui-choice");
+  const nextButton = document.querySelector("#nextButton");
+
+  if (currentTargetText === correctAnswer) {
+    console.log("you got it right!");
+    currentDiv.classList.add("correct");
+    nextButton.classList.remove("hidden");
+    score++;
+    console.log("current try is: " + currentTry);
+  } else if (currentTry !== 2) {
+    currentDiv.classList.add("incorrect");
+    currentTry++;
+    console.log("Wrong, current try is: " + currentTry);
+  }
+  if (currentTry === 2) {
+    nextButton.classList.remove("hidden");
   }
 }
