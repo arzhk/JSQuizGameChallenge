@@ -94,6 +94,10 @@ const questions = [
   },
 ];
 
+let score = 0;
+let currentQuestion = 0;
+let questionNumber = 1;
+
 function play() {
   const homeContainer = document.querySelector("#maincontainer");
   homeContainer.classList.add("hidden");
@@ -101,6 +105,25 @@ function play() {
   const questionContainer = document.querySelector("#questioncontainer");
   questionContainer.classList.remove("hidden");
 
-  let questionText = document.querySelector("#questionText");
-  questionText.innerText = questions[0].question;
+  setQuestion();
+}
+
+function setQuestion() {
+  let questionTextE = document.querySelector("#questionText");
+  questionTextE.innerText = questions[parseInt(currentQuestion)].question;
+  console.log(currentQuestion);
+
+  let questionNumberE = document.querySelector("#questionNumber");
+  questionNumberE.innerText = questionNumber + "/" + questions.length;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  questionNumber++;
+  if (questionNumber > 10) {
+    questionNumber = 10;
+    showScoreScreen();
+  } else {
+    setQuestion();
+  }
 }
