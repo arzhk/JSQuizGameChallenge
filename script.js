@@ -102,6 +102,7 @@ let questionNumber = 1;
 let choiceSelector = [0, 1, 2, 3];
 let randomChoices = [];
 let currentTry = 0;
+let remainingTries = 2;
 
 function randomiseChoices() {
   let checkA = 0;
@@ -151,12 +152,24 @@ function setQuestion() {
   let choicePre = document.querySelectorAll(".choice-pre");
   let choicePreLetters = ["A.", "B.", "C.", "D."];
 
+  if (
+    questions[currentQuestion].correct_answer === "True" ||
+    questions[currentQuestion].correct_answer === "False"
+  ) {
+    remainingTries = 1;
+  } else {
+    remainingTries = 2;
+  }
+
   let questionTextE = document.querySelector("#questionText");
   questionTextE.innerText = questions[parseInt(currentQuestion)].question;
   console.log(currentQuestion);
 
   let questionNumberE = document.querySelector("#questionNumber");
   questionNumberE.innerText = questionNumber + "/" + questions.length;
+
+  let triesLeftE = document.querySelector("#triesLeft");
+  triesLeftE.innerText = "Remaining Tries: " + remainingTries;
 
   let choices = document.querySelectorAll(".choice-text");
   randomiseChoices();
@@ -188,6 +201,7 @@ function nextQuestion() {
   currentQuestion++;
   questionNumber++;
   currentTry = 0;
+  remainingTries = 2;
   nextButton.classList.add("hidden");
   for (let i = 0; i < choiceContainer.length; i++) {
     choiceContainer[i].classList.remove("correct");
@@ -221,6 +235,7 @@ function selectAnswer() {
   let currentTargetText = currentTargetSplit.pop(currentTargetSplit.length - 1);
   let correctAnswer = questions[currentQuestion].correct_answer;
 
+  let triesLeftE = document.querySelector("#triesLeft");
   const choiceContainer = document.querySelectorAll(".ui-choice");
   const nextButton = document.querySelector("#nextButton");
 
@@ -235,6 +250,8 @@ function selectAnswer() {
     } else if (currentTry !== 1) {
       currentDiv.classList.add("incorrect");
       currentTry++;
+      remainingTries--;
+      triesLeftE.innerText = "Remaining Tries: " + remainingTries;
     }
     if (currentTry === 1) {
       nextButton.classList.remove("hidden");
@@ -249,6 +266,8 @@ function selectAnswer() {
     } else if (currentTry !== 2) {
       currentDiv.classList.add("incorrect");
       currentTry++;
+      remainingTries--;
+      triesLeftE.innerText = "Remaining Tries: " + remainingTries;
     }
     if (currentTry === 2) {
       nextButton.classList.remove("hidden");
