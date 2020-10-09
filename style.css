@@ -182,3 +182,11 @@ h3 {
     font-weight: 300;
     font-size: 16px;
 }
+
+.correct{
+    background-color: #57a36a;
+}
+
+.incorrect{
+    background-color: #b35656;
+}
