@@ -1,3 +1,4 @@
 1. clicking text makes text backgroung colour change, not the box.
 2. can still select wrong answers after getting the right answer.
 3. can still select options after correct answer.
+4. false can be shown before true.
