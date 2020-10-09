@@ -16,17 +16,19 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="maincontainer">
+    <div id="maincontainer">
       <div id="home" class="flex-column flex-center">
         <h1>Welcome.</h1>
-        <button class="playButton"><i class="fas fa-play"></i></button>
+        <button class="playButton" onclick="play()">
+          <i class="fas fa-play"></i>
+        </button>
         <h3>click to play.</h3>
       </div>
     </div>
 
-    <div id="questioncontainer" class="flex-column flex-center">
+    <div id="questioncontainer" class="hidden flex-column flex-center">
       <div class="ui-item-top">
-        <h3>Question.</h3>
+        <h3><span>//</span> Question.</h3>
         <p id="questionText">
           <!--Insert question here-->Adasdsadasdasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasdsadasdasasas
         </p>
