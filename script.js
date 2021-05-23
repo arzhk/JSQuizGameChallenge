@@ -230,9 +230,13 @@ function previousQuestion() {
 
 function selectAnswer() {
   let currentTarget = event.target.innerText;
+  console.log(currentTarget);
   let currentDiv = event.target;
+  console.log(currentDiv);
   let currentTargetSplit = currentTarget.split("\n");
+  console.log(currentTargetSplit);
   let currentTargetText = currentTargetSplit.pop(currentTargetSplit.length - 1);
+  console.log(currentTargetText);
   let correctAnswer = questions[currentQuestion].correct_answer;
 
   let triesLeftE = document.querySelector("#triesLeft");
